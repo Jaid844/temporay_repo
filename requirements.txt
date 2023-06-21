@@ -1,7 +1,6 @@
 Flask
-sklearn
-pandas
+transformers
+torch
 numpy
-matplotlib
 gunicorn
 
