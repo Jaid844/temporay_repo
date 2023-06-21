@@ -1,0 +1,5 @@
+runtime: python3.8
+
+handlers:
+- url: /.*
+  script: main.py
