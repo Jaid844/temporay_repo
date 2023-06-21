@@ -1,8 +1,6 @@
-
 Flask
 transformers
 torch
-numpy
 gunicorn
 
 
