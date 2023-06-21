@@ -1,0 +1,6 @@
+[build]
+  command = "python main.py"
+  publish = "path_to_static_files"  # Set the path to your Flask app's static files
+
+[dev]
+  command = "python main.py"
