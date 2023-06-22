@@ -1,6 +1,5 @@
 import json
 import pickle
-from transformers import BertTokenizer,BertForSequenceClassification
 from transformers import AutoModelForSequenceClassification,AutoTokenizer
 from flask import Flask,request,app,jsonify,url_for,render_template
 import numpy as np
@@ -9,9 +8,8 @@ import torch
 
 app=Flask(__name__)
 ## Load the model
-model_identifier = "zaid683/my_model_683"
 #model=BertForSequenceClassification.from_pretrained('my_model',num_labels=6)
-model = AutoModelForSequenceClassification.from_pretrained(model_identifier, num_labels=6)
+
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -20,7 +18,6 @@ def home():
 def predict_api():
     data=request.json['data']
     print(data)
-    token = BertTokenizer.from_pretrained('distilbert-base-uncased')
     inputs = token(data, padding=True, truncation=True, return_tensors='pt')
     outputs = model(**inputs)
     predictions = torch.nn.functional.softmax(outputs.logits, dim=-1)
@@ -44,7 +41,7 @@ def predict_api():
 @app.route('/predict',methods=['POST'])
 def predict():
     data = list(request.form.values())
-    token = AutoTokenizer.from_pretrained("distilbert-base-uncased")
+    
     inputs = token(data, padding=True, truncation=True, return_tensors='pt')
     outputs = model(**inputs)
     predictions = torch.nn.functional.softmax(outputs.logits, dim=-1)
