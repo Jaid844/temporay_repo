@@ -63,8 +63,7 @@ def predict():
     return render_template("home.html",prediction_text="The sentence refers to  {}".format(values))
 
 
-
-if __name__=="__main__":
-    app.run()
-   
+port = int(os.getenv("PORT",5000))
+if __name__ == "__main__":
+    app.run(port=port,debug=True,host="0.0.0.0")
      
