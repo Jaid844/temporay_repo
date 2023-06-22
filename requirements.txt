@@ -1,7 +1,8 @@
 
 Flask
-transformers
-torch
+sentence-transformers
+spacy
+scikit-learn	
 gunicorn
 
 
